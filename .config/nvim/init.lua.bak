@@ -1,0 +1,60 @@
+require('plugins')
+require('keybinding')
+require('plugins/leap')
+require('plugins/flit')
+
+vim.opt.clipboard = vim.opt.clipboard + "unnamedplus"
+vim.cmd([[ vmap p "_dp ]])
+
+if vim.g.vscode then
+    vim.cmd([[set nobackup]])
+    return 
+end
+-- lua plugins
+require('plugins/nvim-tree')
+require('plugins/nvim-treesitter')
+require('plugins/bufferline')
+require('plugins/vscode')
+--lua require('plugins/project')
+require('plugins/telescope')
+require('plugins/lualine')
+require('plugins/toggleterm')
+require('plugins/indent-blankline')
+--lua require('plugins/nvim-autopairs')
+require('plugins/notify')
+require('plugins/peek')
+
+vim.opt.rnu = true
+vim.opt.nu = true
+vim.opt.ts = 4
+vim.opt.expandtab = true
+vim.opt.softtabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.autoindent = true
+vim.opt.cursorline = true
+vim.opt.termguicolors = true
+vim.opt.background = 'dark'
+
+--colorscheme zephyr
+--colorscheme palenight
+vim.cmd([[colorscheme vscode]])
+
+-- 暂时不改
+--let mapleader = "\<Space>"
+vim.cmd([[inoremap jk <ESC>]])
+
+-- vim.cmd[[
+--  augroup fcitx
+--    au InsertEnter * :lua print('insert')
+--    au InsertLeave * :lua print('leave')
+--    au CmdlineEnter [/\?] :lua print('cmdEnter')
+--    au CmdlineLeave [/\?] :lua print('cmdLeave')
+--  augroup END
+--]]
+-- key bindings
+
+vim.cmd([[execute 'source' '~/.config/nvim/core/nvim-tree.vim']])
+vim.cmd([[execute 'source ' '~/.config/nvim/core/coc.vim']])
+vim.cmd([[execute 'source ' '~/.config/nvim/core/vista.vim']])
+
+-- execute 'source' fnamemodify(expand('<sfile>'), ':h').'/core/coc.vim'
