@@ -1,0 +1,7 @@
+#!/bin/bash
+SHORTCUT=$1
+
+windows=$(xdotool search --limit 1 --pid $(pgrep explorer.exe))
+for window in $windows; do
+    xdotool key --window $window "$SHORTCUT"
+done
